@@ -1,0 +1,1 @@
+function dataset = readdataset(filename, cols)  x = textread(filename, "%s", "delimiter", ",");  dataset = reshape(x, 6, size(x)/6)'; end
