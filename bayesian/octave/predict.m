@@ -4,20 +4,21 @@
 %% calc prediction
 function pred = predict(model, x)
   
-  pred = zeros(size(x)(1),1);
-  cond = zeros(size(model.x)(1),1);
+  mu = struct2cell(model)(1,:);
+  S = struct2cell(model)(2,:);
+  R = struct2cell(model)(3,:);
+  p = zeros(length(x),length(mu));
   
-  for i=1:size(x)(1)
-    b = ones(size(model.x)(1),1);
-    for c=1:size(x)(2)
-      b = b & model.x(:,c)==x(i,c);
-    endfor
-    cond = cond | b;
+  for j=1:length(mu)
+    mi = cell2mat(mu(j));
+    Si = cell2mat(S(j));
+    Ri = cell2mat(R(j));
+    for i = 1:length(x)
+      xi = x(:,i);
+      p(i,j) = xi' * (-1*inv(Si)/2) * xi + (inv(Si)*mi)'*xi -  mi' * (-1*inv(Si)/2) * mi - log(norm(Si))/2 + log(1/length(mu));
+    endfor   
   endfor
-  l = model.l(cond,:);
-  e = model.e(cond);
-    
-  for i=1:size(x)(1)
-    [a,pred(i)] = max(model.p .* l(i,:)/e(i));
-  endfor
+  
+  [w, pred] = max(p,[],2);
+  
 endfunction
