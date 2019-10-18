@@ -3,10 +3,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all;close all;
 %% Read Dataset
+file = "../../data/weather.csv";
+ypred = naive_bayes({"Rainy", "Hot","Normal","False"})
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clear all;close all;
+%% Read Dataset
 file = "../../data/Iris.csv";
 
 x = readdataset(file, 6)(2:end,:);
-x = x(randperm(length(x)),:);
+r = randperm(length(x))
+x = x(r,:);
 y = x(2:end,6);
 y(cellfun(@(x) isequal(x, "Iris-setosa"), y))=1;
 y(cellfun(@(x) isequal(x, "Iris-versicolor"), y))=2;
