@@ -1,0 +1,232 @@
+# Created by Octave 4.4.1, Mon Oct 21 16:13:49 2019 -03 <arthur.santos@gyn-mdg-041384.ojc.com.br>
+# name: c
+# type: cell
+# rows: 7
+# columns: 1
+# name: <cell-element>
+# type: cell
+# rows: 4
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 4
+high
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+low
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 5
+vhigh
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+med
+
+
+
+
+
+# name: <cell-element>
+# type: cell
+# rows: 4
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+low
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+med
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 4
+high
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 5
+vhigh
+
+
+
+
+
+# name: <cell-element>
+# type: cell
+# rows: 4
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 1
+2
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 1
+4
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 1
+3
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 5
+5more
+
+
+
+
+
+# name: <cell-element>
+# type: cell
+# rows: 3
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 1
+2
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 1
+4
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 4
+more
+
+
+
+
+
+# name: <cell-element>
+# type: cell
+# rows: 3
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+med
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+big
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 5
+small
+
+
+
+
+
+# name: <cell-element>
+# type: cell
+# rows: 3
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 4
+high
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+med
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+low
+
+
+
+
+
+# name: <cell-element>
+# type: cell
+# rows: 4
+# columns: 1
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 3
+acc
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 4
+good
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 5
+unacc
+
+
+# name: <cell-element>
+# type: string
+# elements: 1
+# length: 5
+vgood
+
+
+
+
+
+
+
+

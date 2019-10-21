@@ -3,34 +3,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear all;close all;
 %% Read Dataset
-file = "../../data/weather.csv";
-ypred = naive_bayes({"Rainy", "Hot","Normal","False"})
+file = "../../data/car.csv";
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-clear all;close all;
-%% Read Dataset
-file = "../../data/Iris.csv";
-
-x = readdataset(file, 6)(2:end,:);
-r = randperm(length(x))
-x = x(r,:);
-y = x(2:end,6);
-y(cellfun(@(x) isequal(x, "Iris-setosa"), y))=1;
-y(cellfun(@(x) isequal(x, "Iris-versicolor"), y))=2;
-y(cellfun(@(x) isequal(x, "Iris-virginica"), y))=3;
-x = str2double(x(2:end,2:5))';
-y = cell2mat(y);
-c = unique(y);
+x = readdataset(file, 7);
+x = lable_encode(x);
+x = cell2mat(x);
 
 %% Split train and test
-x_train = x(:,1:119);
-y_train = y(1:119);
+slice = floor(length(x)*0.8)
+y_train = x(1:slice,end);
+x_train = x(1:slice,1:end-1)';
 
-x_test = x(:,120:end);
-y_test = y(120:end);
+y_test = x(slice+1:end,end);
+x_test = x(slice+1:end,1:end-1)';
+
+err = zeros(length(x_test),1);
+ypred = zeros(length(x_test),1);
+
+c = unique(y_train);
 
 %% Estimate and Predict
-model = estimator(x_train,y_train);
+model = estimator(x_train,y_train);  
 ypred = predict(model, x_test);
 
 %% Error Calcmodel.R
@@ -39,4 +32,48 @@ for i=1:length(c)
   err = err + sum(ypred(y_test==c(i))!=c(i));
 endfor
 
-printf ("Erro de %d em %d: %d%%\n", err, length(y_test), 100*(err/length(y_test)));
+%% Error Calcmodel.R
+err = ypred!=y_test;
+
+%% Results
+printf ("Erro de %d em %d: %d%%\n", sum(err), length(y_test),
+ 100*(sum(err)/length(y_test)));
+printf ("Acuracia de %d em %d: %d%%\n", length(y_test)-sum(err),
+ length(y_test), 100*((length(y_test)-sum(err))/length(y_test)));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+clear all;close all;
+%% Read Dataset
+file = "../../data/iris_rand.csv";
+
+data = readdataset(file, 5);
+x = zeros(size(data));
+x(:,end) = cell2mat(lable_encode(data(:,end)));
+
+for i=1:size(data)(2)-1
+  x(:,i) = str2double(data(:,i));
+end
+
+%% Split train and test
+slice = floor(length(x)*0.8);
+y_train = x(1:slice,end);
+x_train = x(1:slice,1:end-1)';
+
+y_test = x(slice+1:end,end);
+x_test = x(slice+1:end,1:end-1)';
+
+err = zeros(length(x_test),1);
+ypred = zeros(length(x_test),1);
+
+%% Estimate and Predict
+model = estimator(x_train,y_train);  
+ypred = predict(model, x_test);
+
+%% Error Calcmodel.R
+err = ypred!=y_test;
+
+%% Results
+printf ("Erro de %d em %d: %d%%\n", sum(err), length(y_test),
+ 100*(sum(err)/length(y_test)));
+printf ("Acuracia de %d em %d: %d%%\n", length(y_test)-sum(err),
+ length(y_test), 100*((length(y_test)-sum(err))/length(y_test)));
