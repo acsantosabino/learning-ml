@@ -14,6 +14,19 @@ slice = floor(length(x)*0.8)
 y_train = x(1:slice,end);
 x_train = x(1:slice,1:end-1)';
 
+for n=1:size(x_train)(1)
+  figure(n)
+  b = unique(x_train(n,:));
+  subplot(411)
+  hist(x_train(n,y_train==1), b)
+  subplot(412)
+  hist(x_train(n,y_train==2), b)
+  subplot(413)
+  hist(x_train(n,y_train==3), b)
+  subplot(414)
+  hist(x_train(n,y_train==4), b)
+end
+
 y_test = x(slice+1:end,end);
 x_test = x(slice+1:end,1:end-1)';
 
@@ -58,6 +71,19 @@ end
 slice = floor(length(x)*0.8);
 y_train = x(1:slice,end);
 x_train = x(1:slice,1:end-1)';
+
+for n=1:size(x_train)(1)
+  figure(n)
+  b = min(x_train(1,:));
+  a = max(x_train(1,:));
+  b = [b:(a-b)/10:a];
+  subplot(311)
+  hist(x_train(n,y_train==1), b)
+  subplot(312)
+  hist(x_train(n,y_train==2), b)
+  subplot(313)
+  hist(x_train(n,y_train==3), b)
+end
 
 y_test = x(slice+1:end,end);
 x_test = x(slice+1:end,1:end-1)';
