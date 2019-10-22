@@ -10,7 +10,7 @@ x = lable_encode(x);
 x = cell2mat(x);
 
 %% Split train and test
-slice = floor(length(x)*0.8)
+slice = floor(length(x)*0.8);
 y_train = x(1:slice,end);
 x_train = x(1:slice,1:end-1)';
 
