@@ -22,6 +22,31 @@ err = zeros(length(x_test),1);
 ypred = zeros(length(x_test),1);
 
 %% Predict
+for k = 1:length(x_train)
+  c = unique(y_train);
+  p = zeros(1,length(c));
+
+  for i=1:length(c)
+    p(i) = sum(text_filter(y_train,c{i}))/length(y_train);
+
+    for j=1:size(x_train)(2)
+      p(i) = p(i) * sum(text_filter(x_train(text_filter(y_train,c{i}), j),x_train{k,j}))/sum(text_filter(y_train,c{i}));
+    endfor
+    
+  endfor
+  
+  p = p/sum(p);
+  
+  [v,index] = max(p);
+  ypred(k) = index;
+  err(k) = ~isequal(y_train{k}, c{index});
+endfor
+
+%% Results
+printf ("Erro de %d em %d: %d%%\n", sum(err), length(y_train), 100*(sum(err)/length(y_train)));
+printf ("Acuracia de %d em %d: %d%%\n", length(y_train)-sum(err), length(y_train), 100*((length(y_train)-sum(err))/length(y_train)));
+
+%% Predict
 for k = 1:length(x_test)
   c = unique(y_train);
   p = zeros(1,length(c));
@@ -37,9 +62,9 @@ for k = 1:length(x_test)
   if(sum(p)==0)
     k
     x_test(k)
+  else
+    p = p/sum(p);
   endif
-  
-  p = p/sum(p);
   
   [v,index] = max(p);
   ypred(k) = index;

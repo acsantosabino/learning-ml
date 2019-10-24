@@ -6,7 +6,7 @@ clear all;close all;
 file = "../../data/car.csv";
 
 x = readdataset(file, 7);
-x = lable_encode(x);
+x = label_encode(x);
 x = cell2mat(x);
 
 %% Split train and test
@@ -61,7 +61,7 @@ file = "../../data/iris_rand.csv";
 
 data = readdataset(file, 5);
 x = zeros(size(data));
-x(:,end) = cell2mat(lable_encode(data(:,end)));
+x(:,end) = cell2mat(label_encode(data(:,end)));
 
 for i=1:size(data)(2)-1
   x(:,i) = str2double(data(:,i));

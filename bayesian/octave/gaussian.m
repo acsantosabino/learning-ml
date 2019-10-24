@@ -7,7 +7,7 @@ file = "../../data/iris_rand.csv"
 
 data = readdataset(file, 5);
 x = zeros(size(data));
-x(:,end) = cell2mat(lable_encode(data(:,end)));
+x(:,end) = cell2mat(label_encode(data(:,end)));
 var_labels = {"SepalLengthCm","SepalWidthCm","PetalLengthCm","PetalWidthCm"};
 
 for i=1:size(data)(2)-1
